@@ -37,11 +37,13 @@ public class PostgreSQLDataSource extends AzkabanDataSource {
     final int port = props.getInt("postgresql.port");
     final String host = props.getString("postgresql.host");
     final String dbName = props.getString("postgresql.database");
+    final String urlSuffix = props.getString("postgresql.url.suffix");
+
     final String user = props.getString("postgresql.user");
     final String password = props.getString("postgresql.password");
     final int numConnections = props.getInt("postgresql.numconnections");
 
-    final String url = "jdbc:postgresql://" + (host + ":" + port + "/" + dbName);
+    final String url = "jdbc:postgresql://" + (host + ":" + port + "/" + dbName + urlSuffix);
     addConnectionProperty("useUnicode", "yes");
     addConnectionProperty("characterEncoding", "UTF-8");
     setDriverClassName("org.postgresql.Driver");
